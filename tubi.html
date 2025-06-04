@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafici a Linea con Dati Casuali</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        canvas {
+            max-width: 100%;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+  <h1>Monitoraggio pressione tubi</h1>
+  <button onclick="window.location.href='index.html'">Torna alla Pagina Principale</button>
+
+    <h2>Andamento Mensile</h2>
+    <canvas id="monthlyChart"></canvas>
+
+    <h2>Andamento Giornaliero (Settimana)</h2>
+    <canvas id="dailyChart"></canvas>
+
+    <h2>Andamento Orario (24 Ore)</h2>
+    <canvas id="hourlyChart"></canvas>
+
+    <script>
+        // Genera numeri casuali da 40 a 50
+        function generaDati(numPunti) {
+            return Array.from({ length: numPunti }, () => Math.floor(Math.random() * 11) + 40);
+        }
+
+        // Etichette
+        const mesi = ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'];
+        const giorni = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'];
+        const ore = Array.from({ length: 24 }, (_, i) => `${i}:00`);
+
+        // Funzione per creare un grafico
+        function creaGrafico(idCanvas, etichette, dati, titolo) {
+            new Chart(document.getElementById(idCanvas), {
+                type: 'line',
+                data: {
+                    labels: etichette,
+                    datasets: [{
+                        label: titolo,
+                        data: dati,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                        tension: 0.3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Tempo'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Valore'
+                            },
+                            min: 0,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    }
+                }
+            });
+        }
+
+        // Creazione dei 3 grafici
+        creaGrafico('monthlyChart', mesi, generaDati(12), 'Andamento Mensile');
+        creaGrafico('dailyChart', giorni, generaDati(7), 'Andamento Giornaliero');
+        creaGrafico('hourlyChart', ore, generaDati(24), 'Andamento Orario');
+    </script>
+</body>
+</html>
