@@ -3,16 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <title>Pagina Principale</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .banner {
+      width: calc(100% - 40px); /* lascia 20px di spazio ai lati */
+      height: 150px; /* ridotto da 200px */
+      margin: 20px auto 0; /* spazio sopra e centrato orizzontalmente */
+      background-image: url('pittini.png'); /* sostituisci col tuo file */
+      background-size: cover;
+      background-position: center;
+      border-radius: 5px; /* leggera curvatura angoli */
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      height: calc(100vh - 280px); /* Banner + H1 */
+    }
+
+    .quadrant {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 15px 25px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>Ciao bel</h1>
-  
-  <button onclick="window.location.href='torbi.html'">Controlla la torbidità dell'acqua</button>
 
-  <button onclick="window.location.href='tubi.html'">Monitora la pressione dei tubi</button>
+  <div class="banner"></div>
 
-  <button onclick="window.location.href='magne.html'">Controlla lo stato del filtro magnetico</button>
-  
-  <button onclick="window.location.href='gira.html'">Controlla lo stato delle giranti</button>
+  <h1>Pagina Principale</h1>
+
+  <div class="grid">
+    <div class="quadrant">
+      <button onclick="window.location.href='torbi.html'">Controlla la torbidità dell'acqua</button>
+    </div>
+    <div class="quadrant">
+      <button onclick="window.location.href='tubi.html'">Monitora la pressione dei tubi</button>
+    </div>
+    <div class="quadrant">
+      <button onclick="window.location.href='magne.html'">Controlla lo stato del filtro magnetico</button>
+    </div>
+    <div class="quadrant">
+      <button onclick="window.location.href='gira.html'">Controlla lo stato delle giranti</button>
+    </div>
+  </div>
+
 </body>
 </html>
