@@ -4,19 +4,27 @@
   <meta charset="UTF-8">
   <title>Pagina Principale</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
     }
 
+    .banner-container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
     .banner {
-      width: calc(100% - 40px); /* lascia 20px di spazio ai lati */
-      height: 150px; /* ridotto da 200px */
-      margin: 20px auto 0; /* spazio sopra e centrato orizzontalmente */
-      background-image: url('pittini.png'); /* sostituisci col tuo file */
-      background-size: cover;
-      background-position: center;
-      border-radius: 5px; /* leggera curvatura angoli */
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     h1 {
@@ -28,7 +36,10 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      height: calc(100vh - 280px); /* Banner + H1 */
+      gap: 10px;
+      padding: 0 20px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
     }
 
     .quadrant {
@@ -36,6 +47,9 @@
       justify-content: center;
       align-items: center;
       border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f9f9f9;
+      min-height: 150px;
     }
 
     button {
@@ -43,11 +57,20 @@
       font-size: 16px;
       cursor: pointer;
     }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="banner"></div>
+  <div class="banner-container">
+    <img src="pittini.png" alt="Banner" class="banner">
+  </div>
 
   <h1>Pagina Principale</h1>
 
