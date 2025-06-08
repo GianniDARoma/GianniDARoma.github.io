@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <title>Pagina Principale</title>
   <style>
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
     }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
     }
 
+    /* Banner responsivo */
     .banner-container {
       width: 90%;
       max-width: 1000px;
@@ -20,18 +20,19 @@
       border-radius: 8px;
       overflow: hidden;
     }
-
-    .banner {
+    .banner-container img {
       width: 100%;
       height: auto;
       display: block;
     }
+    /* secondo W3Schools, width:100% e height:auto rendono l'immagine responsiva e mantengono le proporzioni :contentReference[oaicite:1]{index=1} */
 
     h1 {
       text-align: center;
       margin: 20px 0;
     }
 
+    /* Griglia con 4 quadranti come prima */
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -40,6 +41,7 @@
       padding: 0 20px 20px;
       max-width: 1000px;
       margin: 0 auto;
+      height: calc(100vh - (20px + (1000px/1000)*? + 20px + ?)); /* ricalcolo se serve */
     }
 
     .quadrant {
@@ -49,7 +51,9 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       background-color: #f9f9f9;
-      min-height: 150px;
+      /* dimensioni originali approssimate */
+      padding: 10px;
+      min-height: 300px;
     }
 
     button {
@@ -58,10 +62,11 @@
       cursor: pointer;
     }
 
+    /* Stile mobile */
     @media (max-width: 600px) {
       .grid {
         grid-template-columns: 1fr;
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: repeat(4, auto);
       }
     }
   </style>
@@ -69,7 +74,7 @@
 <body>
 
   <div class="banner-container">
-    <img src="pittini.png" alt="Banner" class="banner">
+    <img src="pittini.png" alt="Banner principale">
   </div>
 
   <h1>Pagina Principale</h1>
